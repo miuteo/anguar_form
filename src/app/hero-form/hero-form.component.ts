@@ -13,7 +13,10 @@ export class HeroFormComponent implements OnInit {
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
+  onSubmit() {
+    console.log('submiting');
+    this.submitted = true;
+  }
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
