@@ -4,7 +4,7 @@
     <div>
       <label for="name">Name</label>
       <input type="text"  id="name"
-             required minlength="4"
+             required minlength="4" appForbiddenName forbiddenName="bob"
              [(ngModel)]="model.name" name="name" #spy="ngModel">
       <div *ngIf="spy.invalid && (spy.dirty || spy.touched)"
            class="alert alert-danger">

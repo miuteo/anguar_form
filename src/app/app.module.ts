@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeroFormComponent } from './hero-form/hero-form.component';
 import {FormsModule} from '@angular/forms';
+import { ForbiddenValidatorDirective } from './shared/forbidden-validator.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroFormComponent
+    HeroFormComponent,
+    ForbiddenValidatorDirective
   ],
   imports: [
     BrowserModule,
