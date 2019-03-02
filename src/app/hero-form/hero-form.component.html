@@ -1,12 +1,23 @@
-<div class="container">
+<div class="container" [hidden]="submitted">
   <h1>Hero Form</h1>
   <form #heroForm="ngForm" (ngSubmit)="onSubmit()">
     <div>
       <label for="name">Name</label>
       <input type="text"  id="name"
-             required [(ngModel)]="model.name" name="name" #spy="ngModel">
-      <div [hidden]="spy.valid || spy.pristine"
-           class="alert alert-danger">The name is invalid</div>
+             required minlength="4"
+             [(ngModel)]="model.name" name="name" #spy="ngModel">
+      <div *ngIf="spy.invalid && (spy.dirty || spy.touched)"
+           class="alert alert-danger">
+        <div *ngIf="spy.errors.required">
+          Name is required.
+        </div>
+        <div *ngIf="spy.errors.minlength">
+          Name must be at least 4 characters long.
+        </div>
+        <div *ngIf="spy.errors.forbiddenName">
+          Name cannot be Bob.
+        </div>
+      </div>
     </div>
 
     <div>
@@ -26,4 +37,20 @@
 
   </form>
 </div>
-{{spy?.className}}
+<div [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+  <div class="row">
+    <div class="col-xs-3">Name</div>
+    <div class="col-xs-9">{{ model.name }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Alter Ego</div>
+    <div class="col-xs-9">{{ model.alterEgo }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Power</div>
+    <div class="col-xs-9">{{ model.power }}</div>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="submitted=false;">Edit</button>
+</div>
