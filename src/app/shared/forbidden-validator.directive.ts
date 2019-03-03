@@ -6,6 +6,13 @@ export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
     return forbidden ? {forbiddenName: {value: control.value}} : null;
   };
 }
+// export function f1(param1) {
+//   return (param2) => {
+//       return (param3) => {
+//         console.log(param1, param2, param3);
+//       };
+//   };
+// }
 
 @Directive({
   selector: '[appForbiddenName]',
@@ -15,6 +22,7 @@ export class ForbiddenValidatorDirective implements Validator {
   @Input() forbiddenName: string;
 
   validate(controls: AbstractControl): ValidationErrors | null {
+    // f1(1)(2)(3);
     return this.forbiddenName ? forbiddenNameValidator(new RegExp(this.forbiddenName, 'i'))(controls) : null;
   }
 

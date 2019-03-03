@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HeroFormComponent } from './hero-form/hero-form.component';
 import {FormsModule} from '@angular/forms';
 import { ForbiddenValidatorDirective } from './shared/forbidden-validator.directive';
+import { IdentityRevealedValidatorDirective } from './shared/identity-revealed-validator.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroFormComponent,
-    ForbiddenValidatorDirective
+    ForbiddenValidatorDirective,
+    IdentityRevealedValidatorDirective
   ],
   imports: [
     BrowserModule,
