@@ -1,6 +1,6 @@
 <div class="container" [hidden]="submitted">
   <h1>Hero Form</h1>
-  <form #heroForm="ngForm"  (ngSubmit)="onSubmit()" >
+  <form #heroForm="ngForm"  (ngSubmit)="onSubmit()" appMinValueValidatorGroup >
     <div>
       <label for="name">Name</label>
       <input type="text"  id="name"
@@ -19,20 +19,23 @@
         </div>
       </div>
     </div>
-    <!--<div *ngIf="heroForm.errors?.identityRevealed && (heroForm.touched || heroForm.dirty)" class="cross-validation-error-message alert alert-danger">-->
-      <!--Name cannot match alter ego.-->
-    <!--</div>-->
+    <div *ngIf="heroForm.errors?.identityRevealed && (heroForm.touched || heroForm.dirty)" class="cross-validation-error-message alert alert-danger">
+      Name cannot match alter ego.
+    </div>
 
     <div>
       <label for="alterEgo">Alter Ego</label>
       <input type="text" id="alterEgo"
-      [(ngModel)]="model.alterEgo" name="alterEgo" appMinValueValidator  minValue="{{model.name}}">
+      [(ngModel)]="model.alterEgo" name="alterEgo" >
     </div>
     <div>
       <label for="power">Hero power</label>
       <select id="power" required>
         <option *ngFor="let power of powers" [value]="power">{{power}}</option>
       </select>
+    </div>
+    <div *ngIf="heroForm.errors?.range && (heroForm.touched || heroForm.dirty)" class="cross-validation-error-message alert alert-danger">
+      Range is invalid( {{heroForm.errors.range.min}} is greater than {{heroForm.errors.range.max}} )
     </div>
 
     <button type="submit" [disabled]="!heroForm.form.valid" class="btn btn-success">Submit</button>

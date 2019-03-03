@@ -8,6 +8,7 @@ import {FormsModule} from '@angular/forms';
 import { ForbiddenValidatorDirective } from './shared/forbidden-validator.directive';
 import { IdentityRevealedValidatorDirective } from './shared/identity-revealed-validator.directive';
 import { MinValueValidatorDirective } from './shared/min-value-validator.directive';
+import { MinValueValidatorGroupDirective } from './shared/min-value-validator-group.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { MinValueValidatorDirective } from './shared/min-value-validator.directi
     HeroFormComponent,
     ForbiddenValidatorDirective,
     IdentityRevealedValidatorDirective,
-    MinValueValidatorDirective
+    MinValueValidatorDirective,
+    MinValueValidatorGroupDirective
   ],
   imports: [
     BrowserModule,
