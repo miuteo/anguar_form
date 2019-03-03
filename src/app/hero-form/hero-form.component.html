@@ -1,6 +1,6 @@
 <div class="container" [hidden]="submitted">
   <h1>Hero Form</h1>
-  <form #heroForm="ngForm"  (ngSubmit)="onSubmit()" appIdentityRevealedValidatorDirective>
+  <form #heroForm="ngForm"  (ngSubmit)="onSubmit()" >
     <div>
       <label for="name">Name</label>
       <input type="text"  id="name"
@@ -19,14 +19,14 @@
         </div>
       </div>
     </div>
-    <div *ngIf="heroForm.errors?.identityRevealed && (heroForm.touched || heroForm.dirty)" class="cross-validation-error-message alert alert-danger">
-      Name cannot match alter ego.
-    </div>
+    <!--<div *ngIf="heroForm.errors?.identityRevealed && (heroForm.touched || heroForm.dirty)" class="cross-validation-error-message alert alert-danger">-->
+      <!--Name cannot match alter ego.-->
+    <!--</div>-->
 
     <div>
       <label for="alterEgo">Alter Ego</label>
       <input type="text" id="alterEgo"
-      [(ngModel)]="model.alterEgo" name="alterEgo">
+      [(ngModel)]="model.alterEgo" name="alterEgo" appMinValueValidator  minValue="{{model.name}}">
     </div>
     <div>
       <label for="power">Hero power</label>

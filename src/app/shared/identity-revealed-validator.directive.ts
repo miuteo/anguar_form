@@ -4,7 +4,7 @@ import {AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, Validator, 
 export const identityRevealedValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
   const name = control.get('name');
   const alterEgo = control.get('alterEgo');
-  console.log(`name=${name ? name.value : 'null'},alterEgo=${alterEgo ? alterEgo.value : 'null'}`);
+  // console.log(`name=${name ? name.value : 'null'},alterEgo=${alterEgo ? alterEgo.value : 'null'}`);
   return name && alterEgo && name.value === alterEgo.value ? {identityRevealed: true} : null;
 };
 
